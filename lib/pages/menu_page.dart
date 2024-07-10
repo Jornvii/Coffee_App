@@ -120,9 +120,9 @@ class _MenuPageState extends State<MenuPage> {
                             },
                             child: Container(
                               padding: const EdgeInsets.all(10),
-                              width: containerWidth,
+                              width: containerWidth*1.4,
                               height:
-                                  containerWidth, // Make the height the same as width for a square
+                                  containerWidth*1.6, // Make the height the same as width for a square
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage(product.image),
@@ -138,9 +138,9 @@ class _MenuPageState extends State<MenuPage> {
                                     right: 0,
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
-                                          vertical: 8, horizontal: 12),
+                                          vertical: 10, horizontal: 15),
                                       decoration: BoxDecoration(
-                                        color: Color.fromARGB(137, 19, 18, 18),
+                                        color: Color.fromARGB(136, 186, 155, 94),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Row(
@@ -151,7 +151,7 @@ class _MenuPageState extends State<MenuPage> {
                                             product.name,
                                             style: const TextStyle(
                                               color: Colors.white,
-                                              fontSize: 16,
+                                              fontSize: 13,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -160,6 +160,7 @@ class _MenuPageState extends State<MenuPage> {
                                             style: const TextStyle(
                                               color: Colors.amber,
                                               fontSize: 14,
+                                              fontWeight: FontWeight.bold
                                             ),
                                           ),
                                         ],
@@ -178,7 +179,11 @@ class _MenuPageState extends State<MenuPage> {
               },
             ),
           ),
+
+     //   carousel_slider
+
         ],
+        
       ),
     );
   }
@@ -205,7 +210,12 @@ class _MenuPageState extends State<MenuPage> {
                       ? Colors.amber
                       : Colors.grey.shade200,
                 ),
-                onPressed: () {},
+
+                onPressed: () {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
                 child: Text(
                   categoriesList[index].title,
                   style: const TextStyle(
