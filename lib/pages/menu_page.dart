@@ -120,9 +120,9 @@ class _MenuPageState extends State<MenuPage> {
                             },
                             child: Container(
                               padding: const EdgeInsets.all(10),
-                              width: containerWidth*1.4,
-                              height:
-                                  containerWidth*1.6, // Make the height the same as width for a square
+                              width: containerWidth * 1.4,
+                              height: containerWidth *
+                                  1.6, // Make the height the same as width for a square
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage(product.image),
@@ -140,7 +140,8 @@ class _MenuPageState extends State<MenuPage> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 10, horizontal: 15),
                                       decoration: BoxDecoration(
-                                        color: Color.fromARGB(136, 186, 155, 94),
+                                        color:
+                                            Color.fromARGB(136, 186, 155, 94),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Row(
@@ -158,10 +159,9 @@ class _MenuPageState extends State<MenuPage> {
                                           Text(
                                             "${product.price}",
                                             style: const TextStyle(
-                                              color: Colors.amber,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold
-                                            ),
+                                                color: Colors.amber,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ],
                                       ),
@@ -179,11 +179,32 @@ class _MenuPageState extends State<MenuPage> {
               },
             ),
           ),
-
-     //   carousel_slider
-
+          Padding(
+              padding: const EdgeInsets.all(15),
+              child: SingleChildScrollView(
+                 scrollDirection: Axis.horizontal, 
+                child: Row(
+                  children: [
+                    promotionSection(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    promotionSection(),
+                  ],
+                ),
+              )),
         ],
-        
+      ),
+    );
+  }
+  
+  Container promotionSection() {
+    return Container(
+      height: 120.0,
+      width: 350,
+      decoration: BoxDecoration(
+        color: Color.fromARGB(184, 255, 193, 7),
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
@@ -210,12 +231,11 @@ class _MenuPageState extends State<MenuPage> {
                       ? Colors.amber
                       : Colors.grey.shade200,
                 ),
-
                 onPressed: () {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                },
                 child: Text(
                   categoriesList[index].title,
                   style: const TextStyle(
@@ -225,6 +245,63 @@ class _MenuPageState extends State<MenuPage> {
                 )),
           );
         },
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class PromotionSection extends StatefulWidget {
+  @override
+  _PromotionSectionState createState() => _PromotionSectionState();
+}
+
+class _PromotionSectionState extends State<PromotionSection> {
+  bool isSelected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120.0,
+      width: 350.0,
+      decoration: BoxDecoration(
+        color: Color.fromARGB(184, 255, 193, 7),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network(
+              'https://example.com/your-image.jpg', // Replace with your image URL
+              width: 100.0,
+              height: 100.0,
+            ),
+          ),
+          Spacer(),
+          TextButton(
+            onPressed: () {
+              setState(() {
+                isSelected = !isSelected;
+              });
+            },
+            child: Text(isSelected ? 'Selected' : 'Select'),
+          ),
+        ],
       ),
     );
   }
