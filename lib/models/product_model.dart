@@ -25,18 +25,18 @@ final List<Product> coffeeProducts = [
     image: 'assets/images/americano.png',
     price: '90 ฿',
   ),
-  // Product(
-  //   name: 'Latte',
-  //   description: 'ลาเต้ที่นุ่มนวลและเข้มข้น ผสมผสานระหว่างเอสเปรสโซ่และนมสดอย่างลงตัว ทำให้ได้รสชาตินุ่มและกลิ่นหอมของกาแฟ เหมาะสำหรับการดื่มยามเช้า',
-  //   image: 'assets/images/latte.jpg',
-  //   price: '110 ฿',
-  // ),
-  // Product(
-  //   name: 'Cappuccino',
-  //   description: 'คาปูชิโน่ที่มีฟองนมนุ่มหนา ผสมผสานระหว่างเอสเปรสโซ่ นม และฟองนมอย่างลงตัว ทำให้ได้รสชาติเข้มข้นและกลิ่นหอมอบอวล',
-  //   image: 'assets/images/cappuccino.jpg',
-  //   price: '120 ฿',
-  // ),
+  Product(
+    name: 'Latte',
+    description: 'ลาเต้ที่นุ่มนวลและเข้มข้น ผสมผสานระหว่างเอสเปรสโซ่และนมสดอย่างลงตัว ทำให้ได้รสชาตินุ่มและกลิ่นหอมของกาแฟ เหมาะสำหรับการดื่มยามเช้า',
+    image: 'assets/images/latte.png',
+    price: '110 ฿',
+  ),
+  Product(
+    name: 'Cappuccino',
+    description: 'คาปูชิโน่ที่มีฟองนมนุ่มหนา ผสมผสานระหว่างเอสเปรสโซ่ นม และฟองนมอย่างลงตัว ทำให้ได้รสชาติเข้มข้นและกลิ่นหอมอบอวล',
+    image: 'assets/images/cappuccino.png',
+    price: '120 ฿',
+  ),
 ];
 
 final List<Product> teaProducts = [

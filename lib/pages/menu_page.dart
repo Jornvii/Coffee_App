@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shoping_app/models/product_model.dart';
+import 'package:flutter_shoping_app/pages/detail_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../models/category_model.dart';
@@ -95,71 +96,88 @@ class _MenuPageState extends State<MenuPage> {
             ),
           ),
           Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 25),
-  child: LayoutBuilder(
-    builder: (context, constraints) {
-      double containerWidth = (constraints.maxWidth - 25) / 2;
-
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(selectedCategory[selectedIndex].length, (index) {
-          final product = selectedCategory[selectedIndex][index];
-          return GestureDetector(
-            onTap: () {},
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              width: containerWidth,
-              height: containerWidth, // Make the height the same as width for a square
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(product.image),
-                  fit: BoxFit.fill,
-                ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    bottom: -5,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                       decoration: BoxDecoration(color: Color.fromARGB(137, 19, 18, 18),borderRadius: BorderRadius.circular(10)),
-                      
-                      
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            product.name,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                double containerWidth = (constraints.maxWidth - 25) / 2;
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal, // Adjusted to horizontal
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(
+                      selectedCategory[selectedIndex].length,
+                      (index) {
+                        final product = selectedCategory[selectedIndex][index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DetailScreen(product: product)));
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              width: containerWidth,
+                              height:
+                                  containerWidth, // Make the height the same as width for a square
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(product.image),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    bottom: -5,
+                                    left: 0,
+                                    right: 0,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8, horizontal: 12),
+                                      decoration: BoxDecoration(
+                                        color: Color.fromARGB(137, 19, 18, 18),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            product.name,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            "${product.price}",
+                                            style: const TextStyle(
+                                              color: Colors.amber,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                          Text(
-                            "${product.price}",
-                            style: TextStyle(
-                              color: Colors.amber,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
                   ),
-                ],
-              ),
+                );
+              },
             ),
-          );
-        }),
-      );
-    },
-  ),
-)
-
+          ),
         ],
       ),
     );
