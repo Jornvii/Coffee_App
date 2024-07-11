@@ -19,7 +19,8 @@ class _MenuPageState extends State<MenuPage> {
   List<List<Product>> selectedCategory = [
     coffeeProducts,
     teaProducts,
-    FruitProducts
+    FruitProducts,
+    OtherDrinks
   ];
 
   @override
@@ -73,28 +74,10 @@ class _MenuPageState extends State<MenuPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15,bottom:15),
             child: categoryRow(),
           ),
-          const Padding(
-            padding: EdgeInsets.all(15),
-            child: Row(
-              children: [
-                Text(
-                  "แนะนำ",
-                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 26),
-                ),
-                Spacer(),
-                Text(
-                  "view all",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 14,
-                      color: Colors.amber),
-                )
-              ],
-            ),
-          ),
+          
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: LayoutBuilder(
@@ -179,17 +162,36 @@ class _MenuPageState extends State<MenuPage> {
               },
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Text(
+                  "Promotion",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 26),
+                ),
+                Spacer(),
+                Text(
+                  "view all",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 14,
+                      color: Colors.amber),
+                )
+              ],
+            ),
+          ),
           Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(10),
               child: SingleChildScrollView(
-                 scrollDirection: Axis.horizontal, 
+                scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    promotionSection(),
-                    SizedBox(
+                    promotionSection('assets/images/promotion.png'),
+                    const SizedBox(
                       width: 10,
                     ),
-                    promotionSection(),
+                    promotionSection('assets/images/promotion1.png'),
                   ],
                 ),
               )),
@@ -197,16 +199,26 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
-  
-  Container promotionSection() {
+
+  Container promotionSection(final image) {
     return Container(
-      height: 120.0,
-      width: 350,
-      decoration: BoxDecoration(
-        color: Color.fromARGB(184, 255, 193, 7),
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
+        height: 160,
+        width: 350,
+        decoration: BoxDecoration(
+          color: Color.fromARGB(184, 255, 193, 7),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.fitWidth,
+                ),
+              )
+            ]));
   }
 
   SizedBox categoryRow() {
@@ -249,21 +261,6 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class PromotionSection extends StatefulWidget {
   @override

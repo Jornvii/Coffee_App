@@ -92,3 +92,24 @@ final List<Product> FruitProducts = [
     price: '75 ฿',
   ),
 ];
+final List<Product> OtherDrinks = [
+  Product(
+    name: 'โค้ก',
+    description: 'เครื่องดื่มน้ำอัดลม',
+    image: 'assets/images/cocacola.png',
+    price: '40 ฿',
+  ),
+  Product(
+    name: 'เป๊ปซี่',
+    description: 'เครื่องดื่มน้ำอัดลม',
+    image: 'assets/images/pepsi.png',
+    price: '20 ฿',
+  ),
+  // Product(
+  //   name: 'สไปร์ท',
+  //   description: 'เครื่องดื่มน้ำอัดลม',
+  //   image: 'assets/images/sprite.png',
+  //   price: '20 ฿',
+  // ),
+];
+
