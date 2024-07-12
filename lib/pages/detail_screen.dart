@@ -106,7 +106,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => OrderList(product: widget.product),
+                    builder: (context) => OrderCart(product: widget.product),
                   ),
                 );
               },
