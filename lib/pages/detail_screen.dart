@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoping_app/pages/cart_page.dart';
 
 import '../models/product_model.dart';
 
 class DetailScreen extends StatefulWidget {
   final Product product;
-  const DetailScreen({super.key, required this.product});
+  const DetailScreen({Key? key, required this.product}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -15,23 +16,9 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // floatingActionButton: ElevatedButton(
-      //   style: ElevatedButton.styleFrom(
-      //       backgroundColor: Colors.amber,
-      //       shape:
-      //           RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      //       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
-      //   onPressed: () {},
-      //   child: const Text(
-      //     "Order Now",
-      //     style: TextStyle(
-      //         fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black),
-      //   ),
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             Stack(
               children: [
                 Center(
@@ -53,14 +40,11 @@ class _DetailScreenState extends State<DetailScreen> {
                         image: AssetImage(widget.product.image),
                       ),
                     ),
-                 
                   ),
                 ),
                 ArrowBack(context),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      top:
-                          420.0), // Adjust padding to position content below the image
+                  padding: const EdgeInsets.only(top: 420.0),
                   child: Container(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -72,17 +56,23 @@ class _DetailScreenState extends State<DetailScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     widget.product.name,
                                     style: const TextStyle(
-                                        fontSize: 36, fontWeight: FontWeight.w900),
+                                      fontSize: 36,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
                                   Text(
                                     '${widget.product.price}',
                                     style: const TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.w900,color:Color.fromARGB(255, 85, 66, 8) ),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900,
+                                      color: Color.fromARGB(255, 85, 66, 8),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -90,7 +80,9 @@ class _DetailScreenState extends State<DetailScreen> {
                               Text(
                                 widget.product.description,
                                 style: const TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w500),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                               const SizedBox(height: 10),
                             ],
@@ -102,19 +94,31 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               ],
             ),
-           ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.amber,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
-        onPressed: () {},
-        child: const Text(
-          "Order Now",
-          style: TextStyle(
-              fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black),
-        ),
-      ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OrderList(product: widget.product),
+                  ),
+                );
+              },
+              child: const Text(
+                "Order Now",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -132,8 +136,9 @@ class _DetailScreenState extends State<DetailScreen> {
             Navigator.pop(context);
           },
           constraints: const BoxConstraints(minWidth: 10, maxWidth: 50),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           fillColor: Colors.amber,
           padding: const EdgeInsets.all(12),
           child: const Icon(Icons.arrow_back),
@@ -142,3 +147,52 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 }
+
+// class OrderPage extends StatelessWidget {
+//   final Product product;
+
+//   const OrderPage({Key? key, required this.product}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Order'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               'Product: ${product.name}',
+//               style: TextStyle(fontSize: 24),
+//             ),
+//             const SizedBox(height: 20),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 ElevatedButton(
+//                   onPressed: () {
+//                     // Implement logic to add product to order
+//                     // Example: addToOrder(product);
+//                     ScaffoldMessenger.of(context).showSnackBar(
+//                       const SnackBar(content: Text('Product added to order')),
+//                     );
+//                   },
+//                   child: const Text('Add +'),
+//                 ),
+//                 const SizedBox(width: 20),
+//                 ElevatedButton(
+//                   onPressed: () {
+//                     Navigator.pop(context); // Cancel order and go back
+//                   },
+//                   child: const Text('Cancel Order'),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
