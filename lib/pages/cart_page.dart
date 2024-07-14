@@ -112,7 +112,7 @@ class _OrderCartState extends State<OrderCart> {
                           ),
                         ],
                       ),
-                      const SizedBox(width: 20),
+                      const SizedBox(width: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
