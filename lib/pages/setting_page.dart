@@ -159,20 +159,30 @@ class _SettingsPageState extends State<SettingsPage> {
 }
 
 class PrivacyPolicyPage extends StatelessWidget {
+  const PrivacyPolicyPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Privacy Policy'),
-      ),
-      body: const Center(
-        child: Text('Privacy Policy Content goes here...'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: const [
+            Text(
+              'นโยบายความเป็นส่วนตัว',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
+
 class TermsAndConditionsPage extends StatelessWidget {
+  const TermsAndConditionsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,7 +190,7 @@ class TermsAndConditionsPage extends StatelessWidget {
         title: const Text('Terms and Conditions'),
       ),
       body: const Center(
-        child: Text('Terms and Conditions Content goes here...'),
+        child: Text('Terms and Conditions'),
       ),
     );
   }
