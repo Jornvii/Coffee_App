@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
           activeColor: Colors.amber[900],
           tabBackgroundColor: Colors.orange.shade50,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-          // padding: EdgeInsets.all(12),
 
           tabs: const [
             GButton(
